@@ -240,7 +240,7 @@ export function PodcastEpisodeComponent() {
         </div>
       </footer>
       <script
-        defer
+        async
         src="https://www.buzzsprout.com/2425181/episodes/16121975-shhh-the-library-s-closed-tales-from-a-district-that-knows-best.js?container_id=buzzsprout-player-16121975&player=small"
         type="text/javascript"
       />
