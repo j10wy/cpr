@@ -1,3 +1,5 @@
+import { PodcastEpisodeComponent } from "@/components/podcast-episode";
+
 export default function Home() {
-  return <div>Hello</div>;
+  return <PodcastEpisodeComponent />;
 }
