@@ -26,6 +26,10 @@ export function PodcastEpisodeComponent() {
               </CardHeader>
               <CardContent>
                 <div className="mb-6">
+                  <div className="mb-6">
+                    <div id="buzzsprout-player-16121975"></div>
+                  </div>
+
                   <h2 className="text-2xl font-semibold mb-4">
                     Episode Details
                   </h2>
@@ -42,10 +46,6 @@ export function PodcastEpisodeComponent() {
                     students with even fewer resources. Join us as we shed light
                     on the true cost of silencing school libraries.
                   </p>
-                </div>
-
-                <div className="mb-6">
-                  <div id="buzzsprout-player-16121975"></div>
                 </div>
 
                 <div className="mb-6">
