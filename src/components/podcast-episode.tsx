@@ -1,9 +1,5 @@
-"use client";
-
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { PlayCircle, SkipBack, SkipForward } from "lucide-react";
 import Link from "next/link";
 
 export function PodcastEpisodeComponent() {
@@ -45,28 +41,7 @@ export function PodcastEpisodeComponent() {
                   <h2 className="text-2xl font-semibold mb-4">
                     Podcast Player
                   </h2>
-                  <div className="bg-secondary p-4 rounded-lg">
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="text-lg font-medium">0:00 / 45:00</span>
-                      <div className="space-x-2">
-                        <Button size="icon" variant="ghost">
-                          <SkipBack className="h-4 w-4" />
-                          <span className="sr-only">Skip back</span>
-                        </Button>
-                        <Button size="icon">
-                          <PlayCircle className="h-6 w-6" />
-                          <span className="sr-only">Play</span>
-                        </Button>
-                        <Button size="icon" variant="ghost">
-                          <SkipForward className="h-4 w-4" />
-                          <span className="sr-only">Skip forward</span>
-                        </Button>
-                      </div>
-                    </div>
-                    <div className="w-full bg-primary-foreground rounded-full h-1.5">
-                      <div className="bg-primary h-1.5 rounded-full w-1/4"></div>
-                    </div>
-                  </div>
+                  <div id="buzzsprout-player-16119831"></div>
                 </div>
 
                 <div className="mb-6">
@@ -171,6 +146,11 @@ export function PodcastEpisodeComponent() {
           </p>
         </div>
       </footer>
+      <script
+        defer
+        src="https://www.buzzsprout.com/2425181/episodes/16119831-shhh-the-library-s-closed-tales-from-a-district-that-knows-best.js?container_id=buzzsprout-player-16119831&player=small"
+        type="text/javascript"
+      />
     </div>
   );
 }
