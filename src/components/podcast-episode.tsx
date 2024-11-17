@@ -45,7 +45,7 @@ export function PodcastEpisodeComponent() {
                 </div>
 
                 <div className="mb-6">
-                  <div id="buzzsprout-player-16119886"></div>
+                  <div id="buzzsprout-player-16121975"></div>
                 </div>
 
                 <div className="mb-6">
@@ -241,7 +241,7 @@ export function PodcastEpisodeComponent() {
       </footer>
       <script
         defer
-        src="https://www.buzzsprout.com/2425181/episodes/16119886-shhh-the-library-s-closed-tales-from-a-district-that-knows-best.js?container_id=buzzsprout-player-16119886&player=small"
+        src="https://www.buzzsprout.com/2425181/episodes/16121975-shhh-the-library-s-closed-tales-from-a-district-that-knows-best.js?container_id=buzzsprout-player-16121975&player=small"
         type="text/javascript"
       />
     </div>
