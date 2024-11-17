@@ -1,5 +1,9 @@
-import { PodcastEpisodeComponent } from "@/components/podcast-episode";
+import { Post } from "@/components/post";
 
 export default function Home() {
-  return <PodcastEpisodeComponent />;
+  return (
+    <>
+      <Post />
+    </>
+  );
 }

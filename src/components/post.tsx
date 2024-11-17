@@ -1,8 +1,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Link from "next/link";
+import EmbedPlayer from "@/components/podcast/embed-player";
 
-export function PodcastEpisodeComponent() {
+export function Post() {
   return (
     <div className="min-h-screen bg-background font-sans">
       <header className="bg-primary text-primary-foreground py-6">
@@ -26,9 +27,12 @@ export function PodcastEpisodeComponent() {
               </CardHeader>
               <CardContent>
                 <div className="mb-6">
-                  <div className="mb-6">
-                    <div id="buzzsprout-player-16121975"></div>
-                  </div>
+                  <EmbedPlayer
+                    id={"16121975"}
+                    src={
+                      "https://www.buzzsprout.com/2425181/episodes/16121975-shhh-the-library-s-closed-tales-from-a-district-that-knows-best.js?container_id=buzzsprout-player-16121975&player=small"
+                    }
+                  />
 
                   <h2 className="text-2xl font-semibold mb-4">
                     Episode Details
@@ -239,11 +243,6 @@ export function PodcastEpisodeComponent() {
           </p>
         </div>
       </footer>
-      <script
-        async
-        src="https://www.buzzsprout.com/2425181/episodes/16121975-shhh-the-library-s-closed-tales-from-a-district-that-knows-best.js?container_id=buzzsprout-player-16121975&player=small"
-        type="text/javascript"
-      />
     </div>
   );
 }
