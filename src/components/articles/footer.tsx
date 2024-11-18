@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+// import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { BookOpen, Clock, ThumbsUp } from "lucide-react";
 
@@ -23,13 +23,13 @@ const Footer: React.FC = () => {
         </div>
       </div>
       <div className="flex items-center space-x-4">
-        <Image
-          src="/placeholder.svg"
+        {/* <Image
+          src="https://placehold.co/40x40"
           alt="Author avatar"
           className="rounded-full"
           width={40}
           height={40}
-        />
+        /> */}
         <div>
           <p className="font-semibold">Dr. Jane Smith</p>
           <p className="text-sm text-muted-foreground">

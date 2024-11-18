@@ -85,7 +85,7 @@ export function PodcastPlayer() {
   };
 
   return (
-    <Card className="w-full overflow-hidden">
+    <Card className="w-full overflow-hidden my-6">
       <CardContent className="p-0 flex flex-col sm:flex-row">
         <div className="w-full sm:w-48 h-48 sm:h-auto flex-shrink-0">
           <Image

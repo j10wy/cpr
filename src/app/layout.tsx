@@ -40,6 +40,13 @@ export default function RootLayout({
         >
           <Navbar />
           {children}
+          <footer className="bg-secondary mt-12 py-6">
+            <div className="container mx-auto px-4">
+              <p className="text-center text-sm text-secondary-foreground">
+                © 2024 Mount Diablo Parents Podcast. All rights reserved.
+              </p>
+            </div>
+          </footer>
         </ThemeProvider>
       </body>
     </html>
