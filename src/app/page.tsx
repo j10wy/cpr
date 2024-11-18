@@ -1,5 +1,9 @@
-// import { Post } from "@/components/post";
+import { Post } from "@/components/post";
 
 export default function Home() {
-  return <>{/* <Post /> */}</>;
+  return (
+    <>
+      <Post />
+    </>
+  );
 }
