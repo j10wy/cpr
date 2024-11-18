@@ -38,7 +38,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
+          {/* <Navbar />
           {children}
           <footer className="bg-secondary mt-12 py-6">
             <div className="container mx-auto px-4">
@@ -46,7 +46,7 @@ export default function RootLayout({
                 © 2024 Mount Diablo Parents Podcast. All rights reserved.
               </p>
             </div>
-          </footer>
+          </footer> */}
         </ThemeProvider>
       </body>
     </html>
