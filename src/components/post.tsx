@@ -6,12 +6,6 @@ import { PodcastPlayer } from "@/components/podcast/podcast-player";
 export function Post() {
   return (
     <div className="min-h-screen bg-background font-sans">
-      <header className="bg-primary text-primary-foreground py-6">
-        <div className="container mx-auto px-4">
-          <h1 className="text-3xl font-bold">Mount Diablo Parents Podcast</h1>
-        </div>
-      </header>
-
       <main className="container mx-auto px-4 py-8">
         <div className="grid gap-8 md:grid-cols-3">
           <div className="md:col-span-2">
