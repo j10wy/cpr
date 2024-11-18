@@ -96,7 +96,8 @@ export function PodcastPlayer() {
             height={192}
           />
         </div>
-        <div className="flex-grow flex flex-col justify-between p-4 sm:p-6 bg-gradient-to-br from-gray-300 to-gray-100">
+        {/* Add gradient with bg-gradient-to-br from-gray-300 to-gray-100 */}
+        <div className="flex-grow flex flex-col justify-between p-4 sm:p-6">
           <div>
             <h2 className="text-xl font-bold mb-1">Podcast Episode Title</h2>
             <p className="text-sm text-muted-foreground">Podcast Show Name</p>
