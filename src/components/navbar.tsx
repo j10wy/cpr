@@ -19,7 +19,7 @@ export function Navbar() {
   ];
 
   return (
-    <nav className="z-50 bg-background shadow-sm border-b-2 sticky top-0">
+    <nav className="sticky top-0 shadow-sm z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
