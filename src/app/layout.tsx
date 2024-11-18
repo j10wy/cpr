@@ -38,8 +38,8 @@ export default function RootLayout({
         >
           <div>
             <ModeToggle />
+            {children}
           </div>
-          {children}
         </ThemeProvider>
       </body>
     </html>
