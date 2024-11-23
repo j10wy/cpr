@@ -12,23 +12,28 @@ export function Post() {
         <div className="grid gap-8 md:grid-cols-3">
           <div className="md:col-span-2">
             <Card>
-              {/* <CardHeader>
-                <CardTitle>
-                  Episode 1: &quot;Shhh... The Library’s Closed: Tales from a
-                  District That &apos;Knows Best&apos;&quot;
-                </CardTitle>
-                <p className="text-sm text-muted-foreground">
-                  Published on November 16, 2024 | Duration: 19 minutes
-                </p>
-              </CardHeader> */}
               <CardContent>
-                <PodcastPlayer />
                 <Article>
                   <div id="article">
                     <h3 className="text-2xl font-extrabold tracking-tight">
                       Empty Shelves, Empty Promises? Mount Diablo&apos;s Library
                       Closures Leave Students in the Dark.
                     </h3>
+
+                    <Card className="my-6">
+                      <CardHeader>
+                        <CardTitle>
+                          Episode 1: &quot;Shhh... The Library’s Closed: Tales
+                          from a District That &apos;Knows Best&apos;&quot;
+                        </CardTitle>
+                        <p className="text-sm text-muted-foreground">
+                          Published on November 16, 2024 | Duration: 19 minutes
+                        </p>
+                      </CardHeader>
+                      <CardContent>
+                        <PodcastPlayer />
+                      </CardContent>
+                    </Card>
 
                     <ul className="list-disc pl-6">
                       <li>
