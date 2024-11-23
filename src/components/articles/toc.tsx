@@ -17,10 +17,7 @@ interface TableOfContentsItem {
 // THIS IS BROKEN BECAUSE THE HEADINGS DO NOT HAVE IDS.
 
 export default function ToC() {
-  const [
-    //activeId,
-    setActiveId,
-  ] = useState<string>("");
+  const [activeId, setActiveId] = useState<string>("");
   const [toc, setToc] = useState<TableOfContentsItem[]>([]);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
@@ -81,10 +78,10 @@ export default function ToC() {
                   <Button
                     variant="ghost"
                     className={cn(
-                      "text-left"
-                      // activeId === item.id
-                      //   ? "bg-accent text-accent-foreground"
-                      //   : ""
+                      "text-left",
+                      activeId === item.id
+                        ? "bg-accent text-accent-foreground"
+                        : ""
                     )}
                     onClick={() => handleTOCClick(item.id)}
                   >
