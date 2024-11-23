@@ -17,7 +17,10 @@ interface TableOfContentsItem {
 // THIS IS BROKEN BECAUSE THE HEADINGS DO NOT HAVE IDS.
 
 export default function ToC() {
-  const [activeId, setActiveId] = useState<string>("");
+  const [
+    //activeId,
+    setActiveId,
+  ] = useState<string>("");
   const [toc, setToc] = useState<TableOfContentsItem[]>([]);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
