@@ -1,9 +1,9 @@
 import React from "react";
-import { Sources, Source } from "../../../components/sources";
 import { Card } from "@/components/ui/card";
 import { PodcastPlayer } from "@/components/podcast/podcast-player";
 import Header from "@/components/articles/header";
 import Footer from "@/components/articles/footer";
+import { Source, Sources } from "@/components/sources";
 
 interface Article {
   title: string;
