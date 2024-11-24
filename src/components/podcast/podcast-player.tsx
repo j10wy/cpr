@@ -87,7 +87,7 @@ export function PodcastPlayer() {
   return (
     <Card className="w-full overflow-hidden my-6">
       <CardContent className="p-0 flex flex-col sm:flex-row">
-        <div className="w-full sm:w-48 h-48 sm:h-auto flex-shrink-0">
+        <div className="w-full sm:w-48 h-48 sm:h-auto flex-shrink-0 mx-0">
           <Image
             src="/podcasts/episode-01-closing-libraries.png"
             alt="Podcast cover"
@@ -97,10 +97,15 @@ export function PodcastPlayer() {
           />
         </div>
         {/* Add gradient with bg-gradient-to-br from-gray-300 to-gray-100 */}
-        <div className="flex-grow flex flex-col justify-between p-4 sm:p-6">
+        <div className="flex-grow flex flex-col justify-between p-4">
           <div>
-            <h2 className="text-xl font-bold mb-1">Podcast Episode Title</h2>
-            <p className="text-sm text-muted-foreground">Podcast Show Name</p>
+            <h2 className="text-sm font-bold mb-1">
+              Episode 1: &quot;Shhh... The Library’s Closed: Tales from a
+              District That &apos;Knows Best&apos;&quot;
+            </h2>
+            <p className="text-sm text-muted-foreground">
+              Published on November 16, 2024 | Duration: 19 minutes
+            </p>
           </div>
           <div className="space-y-4 mt-4">
             <Slider

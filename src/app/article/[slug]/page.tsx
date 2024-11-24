@@ -1,6 +1,6 @@
 import React from "react";
 import { Sources, Source } from "@/components/sources";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { PodcastPlayer } from "@/components/podcast/podcast-player";
 import Header from "@/components/articles/header";
 import Footer from "@/components/articles/footer";
@@ -74,20 +74,7 @@ export default async function ArticlePage() {
       />
 
       <div id="article-content">
-        <Card className="my-6">
-          <CardHeader>
-            <CardTitle>
-              Episode 1: &quot;Shhh... The Library’s Closed: Tales from a
-              District That &apos;Knows Best&apos;&quot;
-            </CardTitle>
-            <p className="text-sm text-muted-foreground">
-              Published on November 16, 2024 | Duration: 19 minutes
-            </p>
-          </CardHeader>
-          <CardContent>
-            <PodcastPlayer />
-          </CardContent>
-        </Card>
+        <PodcastPlayer />
 
         <p className="leading-6 my-4 text-base font-normal">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis,
