@@ -1,5 +1,5 @@
 import React from "react";
-import { Sources, Source } from "@/components/sources";
+import { Sources, Source } from "../../../components/sources";
 import { Card } from "@/components/ui/card";
 import { PodcastPlayer } from "@/components/podcast/podcast-player";
 import Header from "@/components/articles/header";
