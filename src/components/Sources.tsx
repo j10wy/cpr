@@ -1,6 +1,7 @@
 import React from "react";
 import { ExternalLink, Book, FileText, Globe, Newspaper } from "lucide-react";
 import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
 
 /* Source represents a source of information for an article */
 export interface Source {
@@ -28,23 +29,23 @@ const sourceColors = {
   newspaper: "from-orange-400 to-amber-300",
 };
 
-export function Sources({ sources }: SourcesProps) {
+export function Sources({ sources }: Readonly<SourcesProps>) {
   return (
     <section className="py-8 mt-6">
       <div className="container mx-auto px-4">
-        <h2 className="text-2xl font-bold mb-6 text-center text-gray-800 dark:text-white">
+        <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
             Dive Deeper: Our Sources
           </span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {sources.map((source, index) => {
+          {sources.map((source) => {
             const Icon = sourceIcons[source.type];
             const colorClass = sourceColors[source.type];
 
             return (
               <div
-                key={index}
+                key={`${source.title}`}
                 className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transform transition-all duration-300 ease-in-out hover:scale-102 group"
               >
                 <div
@@ -57,21 +58,19 @@ export function Sources({ sources }: SourcesProps) {
                       >
                         <Icon className="w-4 h-4 text-white" />
                       </div>
-                      <h3 className="font-semibold text-base text-gray-800 dark:text-white group-hover:text-white transition-colors duration-300">
+                      <div className="font-semibold text-base text-gray-800 dark:text-white group-hover:text-white transition-colors duration-300">
                         {source.title}
-                      </h3>
+                      </div>
                     </div>
                     <p className="text-xs text-gray-600 dark:text-gray-300 group-hover:text-white transition-colors duration-300 mb-2 line-clamp-3">
                       {source.blurb}
                     </p>
                   </div>
                   <div className="flex items-center justify-between mt-2">
-                    <p className="text-xs text-gray-500 dark:text-gray-400 group-hover:text-white transition-colors duration-300 capitalize">
-                      {source.type}
-                    </p>
+                    <Badge variant="secondary">{source.type}</Badge>
                     <Link
                       href={source.url}
-                      className="inline-flex items-center justify-center space-x-1 px-3 py-1 bg-white dark:bg-gray-700 text-gray-800 dark:text-white text-xs rounded-full shadow-sm transition-all duration-300 ease-in-out group-hover:bg-opacity-90 group-hover:shadow-md"
+                      className="inline-flex items-center justify-center space-x-1 p-3 bg-white dark:bg-gray-700 text-gray-800 dark:text-white text-xs rounded-md shadow-sm transition-all duration-300 ease-in-out group-hover:bg-opacity-90 group-hover:shadow-md"
                       target="_blank"
                       rel="noopener noreferrer"
                     >

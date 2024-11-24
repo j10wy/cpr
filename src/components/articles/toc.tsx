@@ -22,7 +22,7 @@ export default function ToC() {
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
-    const doc = document.getElementById("article");
+    const doc = document.getElementById("article-content");
     const headings = doc?.querySelectorAll<HTMLHeadingElement>("h2, h3, h4");
     if (!headings) return;
 
