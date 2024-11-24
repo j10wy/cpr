@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import { PodcastPlayer } from "@/components/podcast/podcast-player";
 import Header from "@/components/articles/header";
 import Footer from "@/components/articles/footer";
-import { Source, Sources } from "@/components/sources";
+import { Source, Sources } from "@/components/source-list";
 
 interface Article {
   title: string;
