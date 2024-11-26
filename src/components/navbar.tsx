@@ -4,8 +4,14 @@ import { useState } from "react";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { ThemeToggle } from "@/components/theme-toggle";
+import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -49,6 +55,9 @@ export function Navbar() {
                   <span className="sr-only">Open main menu</span>
                 </Button>
               </SheetTrigger>
+              <VisuallyHidden.Root>
+                <SheetTitle>Site Navigation</SheetTitle>
+              </VisuallyHidden.Root>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <nav className="mt-8">
                   {navItems.map((item) => (
