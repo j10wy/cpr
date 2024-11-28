@@ -44,9 +44,22 @@ export default async function ArticlePage({ params }: UrlProps) {
   const supabase = await createClient();
   const { data: articles } = await supabase
     .from("articles")
-    .select("content")
+    .select(
+      `
+    *,
+    podcast:podcasts (
+      id,
+      title,
+      description,
+      audio_url,
+      image_url
+    )
+  `
+    )
     .eq("slug", slug)
     .limit(1);
+
+  console.log({ articles });
 
   const content = (articles?.[0]?.content as string) ?? ("" as string);
 
