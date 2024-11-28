@@ -5,6 +5,7 @@ import Header from "@/components/articles/header";
 import Footer from "@/components/articles/footer";
 import { Source, Sources } from "@/components/source-list";
 import { createClient } from "@/utils/supabase/server";
+import Markdown from "react-markdown";
 
 interface Article {
   title: string;
@@ -12,16 +13,42 @@ interface Article {
   sources: Source[];
 }
 
+type UrlProps = Readonly<{
+  params: { slug: string };
+}>;
+
+function RenderMarkdown({
+  content,
+}: Readonly<{ content: string }>): JSX.Element {
+  return (
+    <Markdown
+      components={{
+        h1: "h2",
+        ul({ children }) {
+          return <ul className="list-disc pl-6">{children}</ul>;
+        },
+        p({ children }) {
+          return (
+            <p className="leading-6 my-4 text-base font-normal">{children}</p>
+          );
+        },
+      }}
+    >
+      {content}
+    </Markdown>
+  );
+}
+
 //Props > {params}: {params: { slug: string };}
-export default async function ArticlePage() {
+export default async function ArticlePage({ params }: UrlProps) {
   const supabase = await createClient();
   const { data: articles } = await supabase
     .from("articles")
     .select("content")
-    .eq("slug", "slug-01")
+    .eq("slug", params.slug)
     .limit(1);
 
-  const content = articles?.[0]?.content;
+  const content = (articles?.[0]?.content as string) ?? ("" as string);
 
   // This is a mock-up of how you might fetch article data
   // In a real application, you would fetch this data from your CMS or API
@@ -85,57 +112,8 @@ export default async function ArticlePage() {
 
       <div id="article-content">
         <PodcastPlayer />
+        <RenderMarkdown content={content} />
 
-        <p>{content}</p>
-
-        <p className="leading-6 my-4 text-base font-normal">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis,
-          maxime. Accusamus assumenda magnam, at maiores iusto quod maxime
-          earum, blanditiis totam, quasi aut tempore amet adipisci error facere!
-          Sit, rerum. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Magni animi perferendis, mollitia voluptatum doloribus numquam
-          expedita in vel corporis quo nemo incidunt saepe corrupti excepturi
-          ratione a illum odit ad.
-        </p>
-        <ul className="list-disc pl-6">
-          <li>
-            Developing robust ethical guidelines for AI development and
-            deployment
-          </li>
-          <li>Investing in AI education and re-skilling programs</li>
-          <li>Encouraging interdisciplinary collaboration in AI research</li>
-          <li>Implementing transparent and accountable AI systems</li>
-          <li>
-            Fostering public dialogue and understanding of AI technologies
-          </li>
-        </ul>
-        <p className="leading-6 my-4 text-base font-normal">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis,
-          maxime. Accusamus assumenda magnam, at maiores iusto quod maxime
-          earum, blanditiis totam, quasi aut tempore amet adipisci error facere!
-          Sit, rerum. Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-          Distinctio nemo nisi dolor non numquam hic voluptatum animi tempora
-          cupiditate aperiam voluptates praesentium minus enim ipsa atque
-          maiores, nobis quas iste!
-        </p>
-        <p className="leading-6 my-4 text-base font-normal">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis,
-          maxime. Accusamus assumenda magnam, at maiores iusto quod maxime
-          earum, blanditiis totam, quasi aut tempore amet adipisci error facere!
-          Sit, rerum. Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          Necessitatibus porro, omnis dicta explicabo suscipit vero, ad iusto
-          quam quisquam error hic sed dolores eum quidem debitis, sequi
-          laudantium perferendis quia!
-        </p>
-        <p className="leading-6 my-4 text-base font-normal">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis,
-          maxime. Accusamus assumenda magnam, at maiores iusto quod maxime
-          earum, blanditiis totam, quasi aut tempore amet adipisci error facere!
-          Sit, rerum. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Magni modi, explicabo tempora tempore officiis fugiat, dolores quae
-          numquam unde voluptate blanditiis perferendis recusandae nobis ratione
-          repellat, enim facilis atque dolorum?
-        </p>
         <Card className="p-6 my-8 bg-primary/5 border-primary/10">
           <h3 className="text-lg font-semibold mb-2">Did you know?</h3>
           <p className="text-sm text-muted-foreground">
