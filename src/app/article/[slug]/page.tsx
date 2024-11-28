@@ -14,7 +14,7 @@ interface Article {
 }
 
 type UrlProps = Readonly<{
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }>;
 
 function RenderMarkdown({
@@ -39,13 +39,13 @@ function RenderMarkdown({
   );
 }
 
-//Props > {params}: {params: { slug: string };}
 export default async function ArticlePage({ params }: UrlProps) {
+  const slug = (await params).slug;
   const supabase = await createClient();
   const { data: articles } = await supabase
     .from("articles")
     .select("content")
-    .eq("slug", params.slug)
+    .eq("slug", slug)
     .limit(1);
 
   const content = (articles?.[0]?.content as string) ?? ("" as string);
