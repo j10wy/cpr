@@ -4,6 +4,7 @@ import { PodcastPlayer } from "@/components/podcast/podcast-player";
 import Header from "@/components/articles/header";
 import Footer from "@/components/articles/footer";
 import { Source, Sources } from "@/components/source-list";
+import { createClient } from "@/utils/supabase/server";
 
 interface Article {
   title: string;
@@ -13,6 +14,15 @@ interface Article {
 
 //Props > {params}: {params: { slug: string };}
 export default async function ArticlePage() {
+  const supabase = await createClient();
+  const { data: articles } = await supabase
+    .from("articles")
+    .select("content")
+    .eq("slug", "slug-01")
+    .limit(1);
+
+  const content = articles?.[0]?.content;
+
   // This is a mock-up of how you might fetch article data
   // In a real application, you would fetch this data from your CMS or API
   const article: Article = {
@@ -76,6 +86,8 @@ export default async function ArticlePage() {
       <div id="article-content">
         <PodcastPlayer />
 
+        <p>{content}</p>
+
         <p className="leading-6 my-4 text-base font-normal">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis,
           maxime. Accusamus assumenda magnam, at maiores iusto quod maxime
@@ -85,7 +97,6 @@ export default async function ArticlePage() {
           expedita in vel corporis quo nemo incidunt saepe corrupti excepturi
           ratione a illum odit ad.
         </p>
-
         <ul className="list-disc pl-6">
           <li>
             Developing robust ethical guidelines for AI development and
@@ -98,7 +109,6 @@ export default async function ArticlePage() {
             Fostering public dialogue and understanding of AI technologies
           </li>
         </ul>
-
         <p className="leading-6 my-4 text-base font-normal">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis,
           maxime. Accusamus assumenda magnam, at maiores iusto quod maxime
@@ -108,7 +118,6 @@ export default async function ArticlePage() {
           cupiditate aperiam voluptates praesentium minus enim ipsa atque
           maiores, nobis quas iste!
         </p>
-
         <p className="leading-6 my-4 text-base font-normal">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis,
           maxime. Accusamus assumenda magnam, at maiores iusto quod maxime
@@ -118,7 +127,6 @@ export default async function ArticlePage() {
           quam quisquam error hic sed dolores eum quidem debitis, sequi
           laudantium perferendis quia!
         </p>
-
         <p className="leading-6 my-4 text-base font-normal">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis,
           maxime. Accusamus assumenda magnam, at maiores iusto quod maxime
@@ -128,7 +136,6 @@ export default async function ArticlePage() {
           numquam unde voluptate blanditiis perferendis recusandae nobis ratione
           repellat, enim facilis atque dolorum?
         </p>
-
         <Card className="p-6 my-8 bg-primary/5 border-primary/10">
           <h3 className="text-lg font-semibold mb-2">Did you know?</h3>
           <p className="text-sm text-muted-foreground">
@@ -137,7 +144,6 @@ export default async function ArticlePage() {
             of China and India combined.
           </p>
         </Card>
-
         <Sources sources={article.sources} />
         <Footer />
       </div>
