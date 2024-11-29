@@ -1,8 +1,6 @@
-import { Source } from "@/components/source-list";
 export interface Post {
 	title: string;
 	content: string;
-	sources: Source[];
 }
 
 export type UrlProps = Readonly<{
@@ -23,4 +21,14 @@ export interface Article {
 	content: string; // Example column
 	slug: string;
 	podcast: Podcast;
+}
+
+export interface ServerSource {
+	source: {
+		id: number;
+		url: string;
+		title: string;
+		category: string;
+		description: string;
+	};
 }

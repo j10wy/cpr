@@ -1,12 +1,37 @@
 import Footer from "@/components/articles/footer";
 import Header from "@/components/articles/header";
 import { PodcastPlayer } from "@/components/podcast/podcast-player";
-import { Sources } from "@/components/source-list";
+import { Source, Sources } from "@/components/source-list";
 import { Card } from "@/components/ui/card";
 import { createClient } from "@/utils/supabase/server";
 import React from "react";
 import Markdown from "react-markdown";
-import { Article, Post, UrlProps } from "./models";
+import { Article, Post, ServerSource, UrlProps } from "./models";
+
+function getSourceType(type: string): "web" | "book" | "journal" | "newspaper" {
+  switch (type) {
+    case "web":
+      return "web";
+    case "book":
+      return "book";
+    case "journal":
+      return "journal";
+    case "newspaper":
+      return "newspaper";
+    default:
+      return "web";
+  }
+}
+
+function makeSource({ source }: ServerSource): Source {
+  const s = {
+    title: source.title,
+    url: source.url,
+    type: getSourceType(source.category),
+    blurb: source.description,
+  };
+  return s;
+}
 
 function RenderMarkdown({
   content,
@@ -51,58 +76,33 @@ export default async function ArticlePage({ params }: UrlProps) {
     .limit(1);
 
   const data = articles?.[0];
+  const articleId = data?.id ?? 0;
   const content = data?.content;
   const podcast = data?.podcast;
+
+  // Fetch the sources associated with the article
+  const { data: sources } = await supabase
+    .from("article_sources")
+    .select<string, ServerSource>(
+      `
+        source:sources (
+          id,
+          title,
+          category,
+          description,
+          url
+        )
+      `
+    )
+    .eq("article_id", articleId);
+
+  const sourcesData = (sources ?? []).map((source) => makeSource(source));
 
   // This is a mock-up of how you might fetch article data
   // In a real application, you would fetch this data from your CMS or API
   const article: Post = {
     title: `Empty Shelves, Empty Promises? Mount Diablo's Library Closures Leave Students in the Dark.`,
     content: "This is the main content of the article...",
-    sources: [
-      {
-        title: "MIT Technology Review",
-        url: "https://www.technologyreview.com/",
-        type: "web",
-        blurb:
-          "MIT Technology Review is a world-renowned, independent media company whose insight, analysis, reviews, interviews and live events explain the newest technologies and their commercial, social and political impacts.",
-      },
-      {
-        title: "AI: A Modern Approach",
-        url: "https://aima.cs.berkeley.edu/",
-        type: "book",
-        blurb:
-          "The leading textbook in Artificial Intelligence, used in over 1400 universities in over 125 countries. A comprehensive, up-to-date introduction to the theory and practice of artificial intelligence.",
-      },
-      {
-        title: "Nature Machine Intelligence",
-        url: "https://www.nature.com/natmachintell/",
-        type: "journal",
-        blurb:
-          "Nature Machine Intelligence is a journal for research and perspectives from the fast-moving fields of artificial intelligence, machine learning and robotics.",
-      },
-      {
-        title: "The New York Times - Technology",
-        url: "https://www.nytimes.com/section/technology",
-        type: "newspaper",
-        blurb:
-          "The New York Times provides in-depth coverage of technology's impact on business, science, and society, including the latest developments in AI and machine learning.",
-      },
-      {
-        title: "OpenAI",
-        url: "https://openai.com/",
-        type: "web",
-        blurb:
-          "OpenAI is an AI research and deployment company dedicated to ensuring that artificial general intelligence benefits all of humanity. They regularly publish cutting-edge research in AI.",
-      },
-      {
-        title: "Science Robotics",
-        url: "https://www.science.org/journal/scirobotics",
-        type: "journal",
-        blurb:
-          "Science Robotics covers the theory, design, and application of robotics, including AI applications in robotic systems. It provides a unique perspective on the intersection of robotics and AI.",
-      },
-    ],
   };
 
   return (
@@ -126,7 +126,7 @@ export default async function ArticlePage({ params }: UrlProps) {
             of China and India combined.
           </p>
         </Card>
-        <Sources sources={article.sources} />
+        {!!sourcesData.length && <Sources sources={sourcesData} />}
         <Footer />
       </div>
     </article>
