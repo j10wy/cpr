@@ -1,8 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
-import { Menu } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -10,8 +8,10 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { ThemeToggle } from "@/components/theme-toggle";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
+import { Menu } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);

@@ -1,12 +1,12 @@
-import React from "react";
-import { Card } from "@/components/ui/card";
-import { PodcastPlayer } from "@/components/podcast/podcast-player";
-import Header from "@/components/articles/header";
 import Footer from "@/components/articles/footer";
+import Header from "@/components/articles/header";
+import { PodcastPlayer } from "@/components/podcast/podcast-player";
 import { Sources } from "@/components/source-list";
+import { Card } from "@/components/ui/card";
 import { createClient } from "@/utils/supabase/server";
+import React from "react";
 import Markdown from "react-markdown";
-import { Article, UrlProps, Post } from "./models";
+import { Article, Post, UrlProps } from "./models";
 
 function RenderMarkdown({
   content,

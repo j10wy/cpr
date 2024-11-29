@@ -1,7 +1,7 @@
-import React from "react";
-import { ExternalLink, Book, FileText, Globe, Newspaper } from "lucide-react";
-import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
+import { Book, ExternalLink, FileText, Globe, Newspaper } from "lucide-react";
+import Link from "next/link";
+import React from "react";
 
 /* Source represents a source of information for an article */
 export interface Source {

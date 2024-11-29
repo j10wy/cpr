@@ -1,5 +1,5 @@
-import { Card, CardContent } from "@/components/ui/card";
 import ToC from "@/components/articles/toc";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function RootLayout({
   children,
