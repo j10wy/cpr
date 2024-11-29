@@ -3,19 +3,10 @@ import { Card } from "@/components/ui/card";
 import { PodcastPlayer } from "@/components/podcast/podcast-player";
 import Header from "@/components/articles/header";
 import Footer from "@/components/articles/footer";
-import { Source, Sources } from "@/components/source-list";
+import { Sources } from "@/components/source-list";
 import { createClient } from "@/utils/supabase/server";
 import Markdown from "react-markdown";
-
-interface Article {
-  title: string;
-  content: string;
-  sources: Source[];
-}
-
-type UrlProps = Readonly<{
-  params: Promise<{ slug: string }>;
-}>;
+import { Article, UrlProps, Post } from "./models";
 
 function RenderMarkdown({
   content,
@@ -44,7 +35,7 @@ export default async function ArticlePage({ params }: UrlProps) {
   const supabase = await createClient();
   const { data: articles } = await supabase
     .from("articles")
-    .select(
+    .select<string, Article>(
       `
     *,
     podcast:podcasts (
@@ -59,13 +50,13 @@ export default async function ArticlePage({ params }: UrlProps) {
     .eq("slug", slug)
     .limit(1);
 
-  console.log({ articles });
-
-  const content = (articles?.[0]?.content as string) ?? ("" as string);
+  const data = articles?.[0];
+  const content = data?.content;
+  const podcast = data?.podcast;
 
   // This is a mock-up of how you might fetch article data
   // In a real application, you would fetch this data from your CMS or API
-  const article: Article = {
+  const article: Post = {
     title: `Empty Shelves, Empty Promises? Mount Diablo's Library Closures Leave Students in the Dark.`,
     content: "This is the main content of the article...",
     sources: [
@@ -124,8 +115,8 @@ export default async function ArticlePage({ params }: UrlProps) {
       />
 
       <div id="article-content">
-        <PodcastPlayer />
-        <RenderMarkdown content={content} />
+        {podcast && <PodcastPlayer />}
+        {content && <RenderMarkdown content={content} />}
 
         <Card className="p-6 my-8 bg-primary/5 border-primary/10">
           <h3 className="text-lg font-semibold mb-2">Did you know?</h3>
